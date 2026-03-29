@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LILA Games - Telemetry Tool</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="coordinate-hud">X: 0.0 | Z: 0.0</div>
+    <div id="map-canvas"></div>
+
+    <div id="control-panel">
+        <div id="drag-handle">⋮⋮ Drag to Move Panel ⋮⋮</div>
+        <div class="controls-content" id="ui-controls">
+            </div>
+        
+        <div id="filter-panel">
+            <div class="filter-title">FILTERS & MARKERS</div>
+            <label class="filter-label"><input type="checkbox" id="filter-traffic" checked> <span class="legend-dot human-dot"></span><span class="legend-dot bot-dot"></span> Human & Bot Paths</label>
+            <label class="filter-label"><input type="checkbox" id="filter-kills" checked> <span class="icon-label">🎯</span> Kill Events</label>
+            <label class="filter-label"><input type="checkbox" id="filter-deaths" checked> <span class="icon-label">☠️</span> Combat Deaths</label>
+            <label class="filter-label"><input type="checkbox" id="filter-storm" checked> <span class="icon-label">🌪️</span> Storm Deaths</label>
+            <label class="filter-label"><input type="checkbox" id="filter-loot" checked> <span class="icon-label">💰</span> Loot Collected</label>
+        </div>
+
+        <div class="controls-content" id="heatmap-container"></div>
+
+        <div id="heat-legend-extra" style="display: none; padding: 0 20px 20px 20px;">
+            <div class="legend-divider" style="height: 1px; background: #333; margin-bottom: 15px;"></div>
+            <div class="filter-title" style="font-size: 10px; color: #666; margin-bottom: 8px; font-weight: bold; letter-spacing: 1px;">HEATMAP COLORS</div>
+            
+            <div class="legend-item" style="display: flex; align-items: center; font-size: 11px; margin-bottom: 5px; color: #999;">
+                <div style="width: 12px; height: 12px; background: #00d2ff; border-radius: 2px; margin-right: 8px;"></div> Traffic (Cyan)
+            </div>
+            <div class="legend-item" style="display: flex; align-items: center; font-size: 11px; margin-bottom: 5px; color: #999;">
+                <div style="width: 12px; height: 12px; background: #ff4d4d; border-radius: 2px; margin-right: 8px;"></div> Combat Kills (Red)
+            </div>
+            <div class="legend-item" style="display: flex; align-items: center; font-size: 11px; margin-bottom: 5px; color: #999;">
+                <div style="width: 12px; height: 12px; background: #ff00ff; border-radius: 2px; margin-right: 8px;"></div> Combat Deaths (Magenta)
+            </div>
+            <div class="legend-item" style="display: flex; align-items: center; font-size: 11px; margin-bottom: 5px; color: #999;">
+                <div style="width: 12px; height: 12px; background: #0066ff; border-radius: 2px; margin-right: 8px;"></div> Storm Deaths (Blue)
+            </div>
+            <div class="legend-item" style="display: flex; align-items: center; font-size: 11px; margin-bottom: 5px; color: #999;">
+                <div style="width: 12px; height: 12px; background: #ffd700; border-radius: 2px; margin-right: 8px;"></div> Loot (Gold)
+            </div>
+        </div>
+    </div> <script src="script.js"></script>
+</body>
+</html>

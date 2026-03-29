@@ -1,0 +1,66 @@
+body { background-color: #0a0a0a; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; font-family: sans-serif; overflow: hidden; }
+#coordinate-hud { position: absolute; bottom: 30px; left: 30px; background: rgba(15, 15, 15, 0.9); border: 1px solid #00d2ff; color: #00d2ff; padding: 8px 15px; border-radius: 6px; font-family: monospace; z-index: 1000; pointer-events: none; }
+#map-canvas { width: 1024px; height: 1024px; position: relative; background-size: contain; border: 1px solid #333; }
+
+#control-panel { position: absolute; bottom: 30px; right: 30px; background: rgba(15, 15, 15, 0.95); border: 1px solid #444; border-radius: 12px; width: 340px; z-index: 100; color: white; box-shadow: 0 10px 40px rgba(0,0,0,0.8); }
+#drag-handle { background: #222; padding: 10px; text-align: center; font-size: 11px; color: #666; cursor: grab; border-radius: 12px 12px 0 0; }
+.controls-content { padding: 15px 20px 0 20px; }
+#heatmap-container { padding: 0 20px 20px 20px; }
+
+select { width: 100%; background: #1a1a1a; color: #00d2ff; border: 1px solid #333; padding: 10px; border-radius: 6px; margin-bottom: 15px; }
+input[type="range"] { width: 100%; accent-color: #00d2ff; margin-bottom: 15px; cursor: pointer; }
+
+#filter-panel { padding: 0 20px 15px 20px; }
+.filter-title { font-size: 10px; color: #666; margin-bottom: 8px; font-weight: bold; letter-spacing: 1px; }
+.filter-label { display: flex; align-items: center; font-size: 12px; margin-bottom: 6px; color: #bbb; cursor: pointer; }
+.filter-label input { margin-right: 10px; accent-color: #00d2ff; }
+
+#heatmap-btn { width: 100%; padding: 10px; background: #252525; color: #888; border: 1px solid #333; border-radius: 6px; font-weight: bold; cursor: pointer; }
+#heatmap-btn.active-heat { background: #00d2ff; color: #000; }
+
+.dot { position: absolute; border-radius: 50%; transform: translate(-50%, -50%); pointer-events: none; }
+.human { width: 6px; height: 6px; background: #00d2ff; box-shadow: 0 0 4px #00d2ff; z-index: 10; }
+.bot { width: 6px; height: 6px; background: #ff9900; box-shadow: 0 0 4px #ff9900; z-index: 5; }
+.event-marker { position: absolute; transform: translate(-50%, -50%); font-size: 16px; z-index: 20; pointer-events: none; }
+
+.heatmap-mode .dot { width: 40px; height: 40px; filter: blur(4px); opacity: 0.7; mix-blend-mode: screen; }
+.heatmap-mode .event-marker { display: none; }
+.heatmap-mode .human { background: radial-gradient(circle, #fff 0%, #00d2ff 40%, transparent 70%); }
+.heatmap-mode .bot { background: radial-gradient(circle, #fff 0%, #ff9900 40%, transparent 70%); }
+/* --- HEATMAP COLOR DEFINITIONS --- */
+
+/* Combat Kills (Red) */
+.heatmap-mode .heat-kill { 
+    background: radial-gradient(circle, #fff 0%, #ff4d4d 40%, transparent 70%); 
+    z-index: 50; /* Kills should be on top */
+}
+
+/* Combat Deaths (Magenta) */
+.heatmap-mode .heat-death { 
+    background: radial-gradient(circle, #fff 0%, #ff00ff 40%, transparent 70%); 
+    z-index: 40; 
+}
+
+/* Storm Deaths (Blue) */
+.heatmap-mode .heat-storm { 
+    background: radial-gradient(circle, #fff 0%, #0066ff 40%, transparent 70%); 
+    z-index: 30; 
+}
+
+/* Loot (Gold) */
+.heatmap-mode .heat-loot { 
+    background: radial-gradient(circle, #fff 0%, #ffd700 40%, transparent 70%); 
+    z-index: 20; 
+}
+
+/* This ensures all heatmap dots are large and blurry */
+.heatmap-mode .dot.heat-kill, 
+.heatmap-mode .dot.heat-death, 
+.heatmap-mode .dot.heat-storm, 
+.heatmap-mode .dot.heat-loot {
+    width: 40px;
+    height: 40px;
+    filter: blur(4px);
+    opacity: 0.8;
+    mix-blend-mode: screen;
+}
